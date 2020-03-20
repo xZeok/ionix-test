@@ -1,0 +1,48 @@
+PODS:
+  - Alamofire (4.9.1)
+  - FontAwesomeSwift (1.9.2):
+    - FontAwesomeSwift/Core (= 1.9.2)
+    - FontAwesomeSwift/FontAwesome (= 1.9.2)
+    - FontAwesomeSwift/FoundationIcons (= 1.9.2)
+    - FontAwesomeSwift/Ionicons (= 1.9.2)
+    - FontAwesomeSwift/MaterialDesign (= 1.9.2)
+    - FontAwesomeSwift/Octicons (= 1.9.2)
+    - FontAwesomeSwift/Zocial (= 1.9.2)
+  - FontAwesomeSwift/Core (1.9.2)
+  - FontAwesomeSwift/FontAwesome (1.9.2):
+    - FontAwesomeSwift/Core
+  - FontAwesomeSwift/FoundationIcons (1.9.2):
+    - FontAwesomeSwift/Core
+  - FontAwesomeSwift/Ionicons (1.9.2):
+    - FontAwesomeSwift/Core
+  - FontAwesomeSwift/MaterialDesign (1.9.2):
+    - FontAwesomeSwift/Core
+  - FontAwesomeSwift/Octicons (1.9.2):
+    - FontAwesomeSwift/Core
+  - FontAwesomeSwift/Zocial (1.9.2):
+    - FontAwesomeSwift/Core
+  - IQKeyboardManagerSwift (6.5.5)
+  - SwiftyJSON (5.0.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.0)
+  - FontAwesomeSwift
+  - IQKeyboardManagerSwift
+  - SwiftyJSON
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - FontAwesomeSwift
+    - IQKeyboardManagerSwift
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  FontAwesomeSwift: 58a517f36cd5a16d259d598c70330a5c66a960f0
+  IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+
+PODFILE CHECKSUM: 643964a1d49c5fe8d0362cbcef7a10f6d1539d44
+
+COCOAPODS: 1.8.4
