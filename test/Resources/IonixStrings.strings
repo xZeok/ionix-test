@@ -23,3 +23,4 @@
 
 "errorRequest" = "Hubo un error de comunicación.";
 "errorNoRUT" = "Debe ingresar un RUT.";
+"errorNoInformation" = "No se encontró información.";

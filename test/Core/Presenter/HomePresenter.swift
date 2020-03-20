@@ -38,7 +38,6 @@ class HomePresenter {
 
 extension HomePresenter: HomePresenterLogic {
 
-    
     func getItems() {
         view?.showLoading(loading: true)
         self.model.getItems { [weak self] (result) in
@@ -49,7 +48,7 @@ extension HomePresenter: HomePresenterLogic {
                 self.items = items
                 self.view?.loadItems()
             case .failure:
-                self.view?.showError(text: String.Error.request) {
+                self.view?.showAlert(text: String.Error.request) {
                     self.getItems()
                 }
             }
@@ -63,22 +62,28 @@ extension HomePresenter: HomePresenterLogic {
     }
     
     func searchRUT(rut: String?) {
-
         guard let rut = rut, rut != "" else {
-            view?.showError(text: String.Error.noRUT) {}
+            view?.showAlert(text: String.Error.noRUT) {}
             return
         }
-        
         view?.showLoading(loading: true)
-        self.model.searchRUT(rut: rut) { [weak self] (result) in
+        self.model.searchRUT(rut: DES().encrypt(rut)) { [weak self] (result) in
             guard let self = self else { return }
             self.view?.showLoading(loading: false)
             switch result {
             case .success(let response):
-                break
-                //self.view?.loadItems()
+                let items = response.result.items
+                if items.count > 0 {
+                    var message = ""
+                    for element in items {
+                        message.append("\(element.detail.email) \(element.detail.phoneNumber)\n")
+                    }
+                    self.view?.showAlert(text: message) {}
+                } else {
+                    self.view?.showAlert(text: String.Error.noInformation) {}
+                }
             case .failure:
-                self.view?.showError(text: String.Error.request) {}
+                self.view?.showAlert(text: String.Error.request) {}
             }
         }
     }

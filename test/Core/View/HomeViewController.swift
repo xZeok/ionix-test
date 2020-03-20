@@ -11,7 +11,7 @@ import UIKit
 protocol HomeViewControllerLogic: class {
     func showLoading(loading: Bool)
     func loadItems()
-    func showError(text: String, _ completion: @escaping Callback)
+    func showAlert(text: String, _ completion: @escaping Callback)
     func askRUT()
 }
 
@@ -32,6 +32,8 @@ class HomeViewController: UIViewController {
         didSet {
             backgroundImageView.image = #imageLiteral(resourceName: "BackgroundHome")
             backgroundImageView.contentMode = .scaleAspectFill
+            
+            
         }
     }
     
@@ -68,7 +70,6 @@ class HomeViewController: UIViewController {
             loadingActivityIndicatorView.startAnimating()
         }
     }
-    
     
     // MARK: - Initializers.
     
@@ -116,9 +117,10 @@ private extension HomeViewController {
 extension HomeViewController: HomeViewControllerLogic {
     func showLoading(loading: Bool) {
         loadingActivityIndicatorView.isHidden = !loading
+        
     }
     
-    func showError(text: String, _ completion: @escaping Callback) {
+    func showAlert(text: String, _ completion: @escaping Callback) {
         let alert = UIAlertController(title: text, message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: String.Alert.retry, style: .default, handler: { action in
             completion()
@@ -141,6 +143,7 @@ extension HomeViewController: HomeViewControllerLogic {
             self.presenter.searchRUT(rut: rut)
         }))
         self.present(alert, animated: true)
+        
     }
 }
 

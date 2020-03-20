@@ -42,6 +42,7 @@ extension String {
 
     enum Error {
         static let request = "errorRequest".localized,
-        noRUT = "errorNoRUT".localized
+        noRUT = "errorNoRUT".localized,
+        noInformation = "errorNoInformation".localized
     }
 }
