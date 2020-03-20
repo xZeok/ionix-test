@@ -25,7 +25,8 @@ extension String {
 
     enum HomeViewController {
         static let title = "homeVCTitle".localized,
-        name = "homeVCName".localized
+        name = "homeVCName".localized,
+        version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     }
     
     // MARK: - Alerts {

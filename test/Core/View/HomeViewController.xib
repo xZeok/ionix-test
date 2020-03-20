@@ -14,6 +14,7 @@
                 <outlet property="loadingActivityIndicatorView" destination="X9W-vQ-Llz" id="sex-gB-oel"/>
                 <outlet property="nameLabel" destination="9eO-Dy-v1v" id="Z3r-wM-61T"/>
                 <outlet property="titleLabel" destination="YMP-Ld-U9O" id="0yR-2j-EnC"/>
+                <outlet property="versionLabel" destination="roB-sz-E1E" id="r7V-zp-sHn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -58,15 +59,33 @@
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="X9W-vQ-Llz">
                     <rect key="frame" x="197" y="662" width="20" height="20"/>
                 </activityIndicatorView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="h0y-JE-Wos">
+                    <rect key="frame" x="354" y="74.5" width="40" height="29"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="inY-fO-WUH"/>
+                        <constraint firstAttribute="width" constant="40" id="qXB-2E-Pcb"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="roB-sz-E1E">
+                    <rect key="frame" x="353" y="104" width="42" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="X9W-vQ-Llz" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="1.5" id="12M-5T-jMh"/>
                 <constraint firstItem="Y6g-eF-mLj" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="4Do-Uc-9r1"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="h0y-JE-Wos" secondAttribute="trailing" constant="20" id="6X6-cJ-m04"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Kgg-yd-BDg" secondAttribute="trailing" id="9Cq-Sg-ZPA"/>
+                <constraint firstItem="roB-sz-E1E" firstAttribute="centerX" secondItem="h0y-JE-Wos" secondAttribute="centerX" id="9JP-sw-mX1"/>
                 <constraint firstItem="dbq-cl-MXf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="D1I-qS-XRP"/>
                 <constraint firstItem="Kgg-yd-BDg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Gxh-Mf-H4o"/>
                 <constraint firstItem="Kgg-yd-BDg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="URU-tA-q5p"/>
+                <constraint firstItem="roB-sz-E1E" firstAttribute="top" secondItem="h0y-JE-Wos" secondAttribute="bottom" id="ehe-BH-pjU"/>
+                <constraint firstItem="h0y-JE-Wos" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="g8G-rv-wjR"/>
                 <constraint firstAttribute="bottom" secondItem="Y6g-eF-mLj" secondAttribute="bottom" id="ogx-kp-Pzx"/>
                 <constraint firstItem="dbq-cl-MXf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="q1M-Jf-eR6"/>
                 <constraint firstItem="X9W-vQ-Llz" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="syO-Hs-jht"/>
@@ -77,4 +96,7 @@
             <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
         </view>
     </objects>
+    <resources>
+        <image name="questionmark.circle.fill" catalog="system" width="64" height="60"/>
+    </resources>
 </document>

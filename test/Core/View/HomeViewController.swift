@@ -37,6 +37,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel! {
         didSet {
+            titleLabel.textColor = UIColor.Color.labelColor
             titleLabel.font = .boldSystemFont(ofSize: 16)
             titleLabel.text = String.HomeViewController.title
         }
@@ -44,10 +45,21 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var nameLabel: UILabel! {
         didSet {
+            nameLabel.textColor = UIColor.Color.labelColor
             nameLabel.font = .systemFont(ofSize: 14)
             nameLabel.text = String.HomeViewController.name
         }
     }
+    
+    @IBOutlet weak var versionLabel: UILabel! {
+        didSet {
+            versionLabel.textColor = UIColor.Color.labelColor
+            versionLabel.font = .systemFont(ofSize: 12)
+            versionLabel.text = String.HomeViewController.version
+        }
+    }
+    
+    
     
     @IBOutlet weak var itemsCollectionView: UICollectionView! {
         didSet {
@@ -65,6 +77,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var loadingActivityIndicatorView: UIActivityIndicatorView! {
         didSet {
+            loadingActivityIndicatorView.color = UIColor.Color.labelColor
             loadingActivityIndicatorView.startAnimating()
         }
     }
