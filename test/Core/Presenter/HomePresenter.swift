@@ -10,7 +10,7 @@ import Foundation
 
 
 protocol HomePresenterLogic: class {
-    var items: [[Item]] { get }
+    var items: [Item] { get }
     func getItems()
 }
 
@@ -23,7 +23,7 @@ class HomePresenter {
     // MARK: - Private properties.
     
     private let model: HomeModelLogic
-    private(set) var items = [[Item]]()
+    private(set) var items = [Item]()
     
     // MARK: - Initializers.
     
@@ -41,7 +41,7 @@ extension HomePresenter: HomePresenterLogic {
             guard let self = self else { return }
             switch result {
             case .success(let items):
-                print(items)
+                self.items = items
                 self.view?.loadItems()
             case .failure(let error):
                 print(error)

@@ -23,7 +23,7 @@ extension String {
 
     // MARK: - UIViewControllers.
 
-    enum ListViewController {
+    enum HomeViewController {
         static let title = "homeVCTitle".localized,
         name = "homeVCName".localized
     }

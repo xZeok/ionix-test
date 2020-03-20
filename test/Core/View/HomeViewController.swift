@@ -22,19 +22,40 @@ class HomeViewController: UIViewController {
     
     // MARK: - @IBOutlets.
     
-//    @IBOutlet weak var listTableView: UITableView! {
-//        didSet {
-//            listTableView.dataSource = self
-//            listTableView.delegate = self
-//            listTableView.rowHeight = UITableView.automaticDimension
-//            listTableView.separatorStyle = .none
-//            listTableView.separatorInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
-//            let itemCell = UINib(nibName: ItemTableViewCell.className, bundle: Bundle(for: ItemTableViewCell.classForCoder()))
-//            listTableView.register(itemCell, forCellReuseIdentifier: ItemTableViewCell.className)
-//            let emptyCell = UINib(nibName: EmptyTableViewCell.className, bundle: Bundle(for: EmptyTableViewCell.classForCoder()))
-//            listTableView.register(emptyCell, forCellReuseIdentifier: EmptyTableViewCell.className)
-//        }
-//    }
+    @IBOutlet weak var backgroundImageView: UIImageView! {
+        didSet {
+            backgroundImageView.image = #imageLiteral(resourceName: "BackgroundHome")
+            backgroundImageView.contentMode = .scaleAspectFill
+        }
+    }
+    
+    @IBOutlet weak var titleLabel: UILabel! {
+        didSet {
+            titleLabel.font = .boldSystemFont(ofSize: 16)
+            titleLabel.text = String.HomeViewController.title
+        }
+    }
+    
+    @IBOutlet weak var nameLabel: UILabel! {
+        didSet {
+            nameLabel.font = .systemFont(ofSize: 14)
+            nameLabel.text = String.HomeViewController.name
+        }
+    }
+    
+    @IBOutlet weak var itemsCollectionView: UICollectionView! {
+        didSet {
+            itemsCollectionView.delegate = self
+            itemsCollectionView.dataSource = self
+            itemsCollectionView.backgroundColor = .clear
+            itemsCollectionView.isScrollEnabled = true
+            itemsCollectionView.isPagingEnabled = false
+            itemsCollectionView.showsHorizontalScrollIndicator = false
+            itemsCollectionView.showsVerticalScrollIndicator = false
+            let itemCell = UINib(nibName: ItemCollectionViewCell.className, bundle: Bundle(for: ItemCollectionViewCell.classForCoder()))
+            itemsCollectionView.register(itemCell, forCellWithReuseIdentifier: ItemCollectionViewCell.className)
+        }
+    }
     
     // MARK: - Initializers.
     
@@ -67,7 +88,7 @@ private extension HomeViewController {
 extension HomeViewController: HomeViewControllerLogic {
 
     func loadItems() {
-        //listTableView.reloadData()
+        itemsCollectionView.reloadData()
     }
     
     func showError() {
@@ -75,24 +96,31 @@ extension HomeViewController: HomeViewControllerLogic {
     }
 }
 
-// MARK: - UITableView
+// MARK: - UICollectionView
 
-//extension ListViewController: UITableViewDelegate, UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return presenter.items.count == 0 ? 1 : presenter.items.count
-//    }
-//    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        
-//        guard presenter.items.count > 0 else {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: EmptyTableViewCell.className) as? EmptyTableViewCell
-//            return cell ?? UITableViewCell()
-//        }
-//        
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: ItemTableViewCell.className) as? ItemTableViewCell else {
-//            return UITableViewCell()
-//        }
-//        cell.setUp(indexPath: indexPath, item: presenter.items[indexPath.row])
-//        return cell
-//    }
-//}
+extension HomeViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return presenter.items.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCollectionViewCell.className, for: indexPath) as? ItemCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        cell.setUp(item: presenter.items[indexPath.row])
+        return cell
+    }
+}
+
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: 100)
+    }
+}
+
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
+}
+

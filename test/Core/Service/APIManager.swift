@@ -30,8 +30,8 @@ public class APIManager {
     
     init() {
         let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = 35
-        configuration.timeoutIntervalForResource = 35
+        configuration.timeoutIntervalForRequest = 50
+        configuration.timeoutIntervalForResource = 50
         configuration.httpCookieStorage = nil
         self.manager = Alamofire.SessionManager(configuration: configuration)
     }
@@ -50,11 +50,14 @@ public class APIManager {
                     }
                     do {
                         let response = try JSONDecoder().decode(generic, from: data)
+                        print(response)
                         completion(.success(response))
                     } catch {
+                        print("DECODE ERROR")
                         completion(.failure(.decodeError))
                     }
                 case .failure:
+                    print("DECODE ERROR")
                     completion(.failure(.invalidResponse))
                 }
         }
