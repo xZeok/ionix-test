@@ -13,9 +13,8 @@
 
 // MARK: - Alert.
 
-"alertOK" = "OK";
+"alertOK" = "Aceptar";
 "alertCancel" = "Cancelar";
-"alertRetry" = "Reintentar";
 "alertTitle" = "Ingrese el RUT que desea buscar.";
 "alertPlaceholder" = "Ingrese el RUT aquí...";
 

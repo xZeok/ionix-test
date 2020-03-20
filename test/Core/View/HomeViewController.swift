@@ -32,8 +32,6 @@ class HomeViewController: UIViewController {
         didSet {
             backgroundImageView.image = #imageLiteral(resourceName: "BackgroundHome")
             backgroundImageView.contentMode = .scaleAspectFill
-            
-            
         }
     }
     
@@ -90,39 +88,16 @@ class HomeViewController: UIViewController {
     }
 }
 
-// MARK: - Private functions.
-
-private extension HomeViewController {
-    
-//  private func displayAlert(type: AlertType = .standard, mainAction: String = String.Alert.ok) {
-//        let alert = UIAlertController(title: "What's your name?", message: nil, preferredStyle: .alert)
-//        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-//
-//        alert.addTextField(configurationHandler: { textField in
-//            textField.placeholder = "Input your name here..."
-//        })
-//
-//        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-//
-//            if let name = alert.textFields?.first?.text {
-//                print("Your name: \(name)")
-//            }
-//        }))
-//
-//        self.present(alert, animated: true)
-}
-
 // MARK: - ListViewControllerLogic.
 
 extension HomeViewController: HomeViewControllerLogic {
     func showLoading(loading: Bool) {
         loadingActivityIndicatorView.isHidden = !loading
-        
     }
     
     func showAlert(text: String, _ completion: @escaping Callback) {
         let alert = UIAlertController(title: text, message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: String.Alert.retry, style: .default, handler: { action in
+        alert.addAction(UIAlertAction(title: String.Alert.ok, style: .default, handler: { action in
             completion()
         }))
         self.present(alert, animated: true)
@@ -143,7 +118,6 @@ extension HomeViewController: HomeViewControllerLogic {
             self.presenter.searchRUT(rut: rut)
         }))
         self.present(alert, animated: true)
-        
     }
 }
 

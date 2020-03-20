@@ -23,7 +23,9 @@ class HomeModel: HomeModelLogic {
     
     func getItems(_ completion: @escaping CallbackItems) {
         APIManager.shared.request(router: Router.getItems, generic: [[Item]].self) { [weak self] result in
-            guard let self = self else { return }
+            guard let self = self else {
+                return
+            }
             switch result {
             case .success(let data):
                 var newItems = [Item]()
@@ -42,7 +44,6 @@ class HomeModel: HomeModelLogic {
     
     func searchRUT(rut: String, _ completion: @escaping CallbackSearch) {
         APIManager.shared.request(router: Router.searchRUT(parameters: ["rut": rut]), generic: SearchResponse.self) { result in
-            //guard let self = self else { return }
             switch result {
             case .success(let data):
                 completion(.success(data))

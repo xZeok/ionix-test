@@ -15,6 +15,8 @@ enum Router: URLRequestConvertible {
     case getItems
     case searchRUT(parameters: Parameters)
     
+    // MARK:-  Public properties.
+    
     var baseURL: String {
         switch self {
         case .getItems:
@@ -48,6 +50,8 @@ enum Router: URLRequestConvertible {
             return nil
         }
     }
+    
+    // MARK:-  Public functions.
     
     func asURLRequest() throws -> URLRequest {
         let url = try baseURL.asURL()

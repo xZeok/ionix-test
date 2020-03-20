@@ -33,7 +33,6 @@ extension String {
     enum Alert {
         static let ok = "alertOK".localized,
         cancel = "alertCancel".localized,
-        retry = "alertRetry".localized,
         title = "alertTitle".localized,
         placeholder = "alertPlaceholder".localized   
     }

@@ -50,14 +50,11 @@ public class APIManager {
                     }
                     do {
                         let response = try JSONDecoder().decode(generic, from: data)
-                        print(response)
                         completion(.success(response))
                     } catch {
-                        print("DECODE ERROR")
                         completion(.failure(.decodeError))
                     }
                 case .failure:
-                    print("DECODE ERROR")
                     completion(.failure(.invalidResponse))
                 }
         }

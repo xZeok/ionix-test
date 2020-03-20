@@ -7,8 +7,6 @@ target 'test' do
 
   # Pods for test
   pod 'Alamofire', '~> 4.0'
-  pod 'SwiftyJSON'
-  pod 'IQKeyboardManagerSwift'
   pod 'FontAwesome.swift'
 
 end

@@ -68,7 +68,9 @@ extension HomePresenter: HomePresenterLogic {
         }
         view?.showLoading(loading: true)
         self.model.searchRUT(rut: DES().encrypt(rut)) { [weak self] (result) in
-            guard let self = self else { return }
+            guard let self = self else {
+                return
+            }
             self.view?.showLoading(loading: false)
             switch result {
             case .success(let response):
