@@ -6,7 +6,20 @@
   Copyright © 2020 Jaime Capponi. All rights reserved.
 */
 
-// MARK: - HomeViewController
+// MARK: - HomeViewController.
 
 "homeVCTitle" = "Bienvenido";
 "homeVCName" = "Jaime";
+
+// MARK: - Alert.
+
+"alertOK" = "OK";
+"alertCancel" = "Cancelar";
+"alertRetry" = "Reintentar";
+"alertTitle" = "Ingrese el RUT que desea buscar.";
+"alertPlaceholder" = "Ingrese el RUT aquí...";
+
+// MARK: - Errors.
+
+"errorRequest" = "Hubo un error de comunicación.";
+"errorNoRUT" = "Debe ingresar un RUT.";

@@ -30,8 +30,8 @@ public class APIManager {
     
     init() {
         let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = 50
-        configuration.timeoutIntervalForResource = 50
+        configuration.timeoutIntervalForRequest = 40
+        configuration.timeoutIntervalForResource = 40
         configuration.httpCookieStorage = nil
         self.manager = Alamofire.SessionManager(configuration: configuration)
     }

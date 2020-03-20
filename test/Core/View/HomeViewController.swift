@@ -9,9 +9,10 @@
 import UIKit
 
 protocol HomeViewControllerLogic: class {
+    func showLoading(loading: Bool)
     func loadItems()
-    func showError()
-    
+    func showError(text: String, _ completion: @escaping Callback)
+    func askRUT()
 }
 
 class HomeViewController: UIViewController {
@@ -19,6 +20,11 @@ class HomeViewController: UIViewController {
     // MARK: - Private properties.
     
     private let presenter: HomePresenterLogic
+    
+    private enum AlertType {
+        case standard
+        case choice
+    }
     
     // MARK: - @IBOutlets.
     
@@ -57,6 +63,13 @@ class HomeViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var loadingActivityIndicatorView: UIActivityIndicatorView! {
+        didSet {
+            loadingActivityIndicatorView.startAnimating()
+        }
+    }
+    
+    
     // MARK: - Initializers.
     
     init(_ presenter: HomePresenter) {
@@ -80,19 +93,54 @@ class HomeViewController: UIViewController {
 
 private extension HomeViewController {
     
-    
+//  private func displayAlert(type: AlertType = .standard, mainAction: String = String.Alert.ok) {
+//        let alert = UIAlertController(title: "What's your name?", message: nil, preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+//
+//        alert.addTextField(configurationHandler: { textField in
+//            textField.placeholder = "Input your name here..."
+//        })
+//
+//        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+//
+//            if let name = alert.textFields?.first?.text {
+//                print("Your name: \(name)")
+//            }
+//        }))
+//
+//        self.present(alert, animated: true)
 }
 
 // MARK: - ListViewControllerLogic.
 
 extension HomeViewController: HomeViewControllerLogic {
+    func showLoading(loading: Bool) {
+        loadingActivityIndicatorView.isHidden = !loading
+    }
+    
+    func showError(text: String, _ completion: @escaping Callback) {
+        let alert = UIAlertController(title: text, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: String.Alert.retry, style: .default, handler: { action in
+            completion()
+        }))
+        self.present(alert, animated: true)
+    }
 
     func loadItems() {
         itemsCollectionView.reloadData()
     }
     
-    func showError() {
-        
+    func askRUT() {
+        let alert = UIAlertController(title: String.Alert.title, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: String.Alert.cancel, style: .cancel, handler: nil))
+        alert.addTextField(configurationHandler: { textField in
+            textField.placeholder = String.Alert.placeholder
+        })
+        alert.addAction(UIAlertAction(title: String.Alert.ok, style: .default, handler: { action in
+            let rut = alert.textFields?.first?.text
+            self.presenter.searchRUT(rut: rut)
+        }))
+        self.present(alert, animated: true)
     }
 }
 
@@ -120,7 +168,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        presenter.selectItem(indexPath: indexPath)
     }
 }
 

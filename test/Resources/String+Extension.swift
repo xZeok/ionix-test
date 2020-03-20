@@ -27,16 +27,21 @@ extension String {
         static let title = "homeVCTitle".localized,
         name = "homeVCName".localized
     }
-
-    // MARK: - Other messages.
-
-    enum ItemTableViewCell {
-        static let empty = "emptyTVCText".localized
-    }
     
+    // MARK: - Alerts {
+    
+    enum Alert {
+        static let ok = "alertOK".localized,
+        cancel = "alertCancel".localized,
+        retry = "alertRetry".localized,
+        title = "alertTitle".localized,
+        placeholder = "alertPlaceholder".localized   
+    }
+
     // MARK: - Errors.
 
-    enum Errors {
-        static let asdf = "".localized
+    enum Error {
+        static let request = "errorRequest".localized,
+        noRUT = "errorNoRUT".localized
     }
 }

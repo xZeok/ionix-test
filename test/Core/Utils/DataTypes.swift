@@ -8,6 +8,13 @@
 
 import Foundation
 
+// MARK: - Callbacks
+
+public typealias Callback = () -> Void
 public typealias CallbackItems = (Result<[Item], APIManager.ServiceError>) -> Void
+public typealias CallbackSearch = (Result<SearchResponse, APIManager.ServiceError>) -> Void
+
+// MARK: - Others
+
 public typealias Parameters = [String: Any]
 

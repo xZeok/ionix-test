@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import FontAwesomeSwift
+import FontAwesome_swift
+
 
 class ItemCollectionViewCell: UICollectionViewCell {
     
@@ -17,7 +18,12 @@ class ItemCollectionViewCell: UICollectionViewCell {
         didSet {
             if let item = item {
                 nameLabel.text = item.title
-                iconImageView.image = FASIonicons().icon(name: item.icon, size: 20)?.image
+                iconImageView.image = UIImage.fontAwesomeIcon(
+                    code: "fa-\(item.icon)",
+                    style: .regular,
+                    textColor: UIColor.Color.icon,
+                    size: iconImageView.frame.size
+                )
             }
         }
     }
@@ -26,7 +32,7 @@ class ItemCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var iconImageView: UIImageView! {
         didSet {
-            //iconImageView.contentMode = .scaleAspectFit
+            iconImageView.contentMode = .scaleAspectFit
         }
     }
     

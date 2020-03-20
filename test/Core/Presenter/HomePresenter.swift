@@ -12,6 +12,8 @@ import Foundation
 protocol HomePresenterLogic: class {
     var items: [Item] { get }
     func getItems()
+    func selectItem(indexPath: IndexPath)
+    func searchRUT(rut: String?)
 }
 
 class HomePresenter {
@@ -35,16 +37,48 @@ class HomePresenter {
 // MARK: - ListPresenterLogic.
 
 extension HomePresenter: HomePresenterLogic {
+
     
     func getItems() {
+        view?.showLoading(loading: true)
         self.model.getItems { [weak self] (result) in
             guard let self = self else { return }
+            self.view?.showLoading(loading: false)
             switch result {
             case .success(let items):
                 self.items = items
                 self.view?.loadItems()
-            case .failure(let error):
-                print(error)
+            case .failure:
+                self.view?.showError(text: String.Error.request) {
+                    self.getItems()
+                }
+            }
+        }
+    }
+    
+    func selectItem(indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            view?.askRUT()
+        }
+    }
+    
+    func searchRUT(rut: String?) {
+
+        guard let rut = rut, rut != "" else {
+            view?.showError(text: String.Error.noRUT) {}
+            return
+        }
+        
+        view?.showLoading(loading: true)
+        self.model.searchRUT(rut: rut) { [weak self] (result) in
+            guard let self = self else { return }
+            self.view?.showLoading(loading: false)
+            switch result {
+            case .success(let response):
+                break
+                //self.view?.loadItems()
+            case .failure:
+                self.view?.showError(text: String.Error.request) {}
             }
         }
     }

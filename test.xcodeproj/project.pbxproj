@@ -28,6 +28,7 @@
 		EDAE1A9124244198005A0C8C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAE1A9024244198005A0C8C /* Router.swift */; };
 		EDAE1A9524246AAD005A0C8C /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAE1A9324246AAD005A0C8C /* ItemCollectionViewCell.swift */; };
 		EDAE1A9624246AAD005A0C8C /* ItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDAE1A9424246AAD005A0C8C /* ItemCollectionViewCell.xib */; };
+		EDAE1A98242480A0005A0C8C /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAE1A97242480A0005A0C8C /* SearchResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		EDAE1A9024244198005A0C8C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		EDAE1A9324246AAD005A0C8C /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		EDAE1A9424246AAD005A0C8C /* ItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCollectionViewCell.xib; sourceTree = "<group>"; };
+		EDAE1A97242480A0005A0C8C /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		F86D72FABFAFAEF2506ADE90 /* Pods_test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				EDAE1A79242412CB005A0C8C /* Item.swift */,
+				EDAE1A97242480A0005A0C8C /* SearchResponse.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				EDAE1A7D24241333005A0C8C /* HomePresenter.swift in Sources */,
 				EDAE1A7624240E9D005A0C8C /* HomeViewController.swift in Sources */,
 				EDAE1A5B24240AAC005A0C8C /* ViewController.swift in Sources */,
+				EDAE1A98242480A0005A0C8C /* SearchResponse.swift in Sources */,
 				EDAE1A88242415D4005A0C8C /* UIColor+Extension.swift in Sources */,
 				EDAE1A8A242415E2005A0C8C /* String+Extension.swift in Sources */,
 				EDAE1A8224241440005A0C8C /* DataTypes.swift in Sources */,

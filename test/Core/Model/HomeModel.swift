@@ -10,6 +10,7 @@ import Foundation
 
 protocol HomeModelLogic: class {
     func getItems(_ completion: @escaping CallbackItems)
+    func searchRUT(rut: String, _ completion: @escaping CallbackSearch)
 }
 
 class HomeModel: HomeModelLogic {
@@ -33,6 +34,18 @@ class HomeModel: HomeModelLogic {
                 }
                 self.items = newItems
                 completion(.success(self.items))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func searchRUT(rut: String, _ completion: @escaping CallbackSearch) {
+        APIManager.shared.request(router: Router.searchRUT(parameters: ["rut": rut]), generic: SearchResponse.self) { result in
+            //guard let self = self else { return }
+            switch result {
+            case .success(let data):
+                completion(.success(data))
             case .failure(let error):
                 completion(.failure(error))
             }

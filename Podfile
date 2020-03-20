@@ -9,7 +9,7 @@ target 'test' do
   pod 'Alamofire', '~> 4.0'
   pod 'SwiftyJSON'
   pod 'IQKeyboardManagerSwift'
-  pod 'FontAwesomeSwift'
+  pod 'FontAwesome.swift'
 
 end
 
